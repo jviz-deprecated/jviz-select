@@ -97,14 +97,15 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     //Save this
     var self = this;
 
-    /*
-    //Add the input change event listener
-    this.$.input.addEventListener('input', function()
+    //Add the select change event listener
+    this.$.select.addEventListener('change', function()
     {
       //Save the actual input value
-      self.value = self.$.input.value;
+      self.value = self.$.select.value;
+
+      //Fire the change event
+      self.fire('change', { value: self.value });
     });
-    */
 
     //Initialize the options list
     var list = [];
