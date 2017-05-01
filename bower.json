@@ -1,0 +1,15 @@
+{
+  "name": "jviz-select",
+  "description": "Jviz select element",
+  "ignore": [ "**/.*", "node_modules", "bower_components" ],
+  "dependencies":
+  {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "jviz": "jviz/jviz#dev",
+    "jviz-styles": "jviz/jviz-styles#dev",
+    "jviz-icons": "jviz/jviz-icons#dev"
+  },
+  "license": "MIT",
+  "authors": [ "Josemi Juanes <josemijuanes@gmail.com>" ],
+  "keywords": [ "jviz", "webcomponents", "jviz-components", "select", "form-select" ]
+}
