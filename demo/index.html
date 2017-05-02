@@ -1,0 +1,43 @@
+<!--
+@license
+Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
+The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
+-->
+
+<!-- Import webcomponents library -->
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+<!-- Import select element -->
+<link rel="import" href="../jviz-select.html">
+
+<!-- Style -->
+<style>
+  html { margin: 20px !important; }
+</style>
+
+<!-- Select element -->
+<jviz-select id="test" icon="search" width="200px">
+  <option value="value1">Value 1</option>
+  <option value="value2" selected>Value 2</option>
+  <option value="value3">Value 3</option>
+</jviz-select>
+
+<!-- Ready script -->
+<script>
+  //Initialize the element
+  var el = null;
+
+  //Dom ready method
+  jviz.dom.ready(function()
+  {
+    //Initialize the element
+    el = jviz.dom.id('test');
+
+    //Add the change event
+    el.addEventListener('change:value', function(e)
+    {
+      //Display in console
+      console.log('Value changed to ' + e.detail.value);
+    });
+  });
+</script>
