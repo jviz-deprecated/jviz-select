@@ -89,7 +89,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_select.properties.disabled = { type: Boolean, reflectToAttribute: true, value: false };
   jviz_select.properties.width = { type: String, reflectToAttribute: true, value: '100px', observer: '_update_width' };
   jviz_select.properties.value = { type: String, reflectToAttribute: false, value: '' };
-  jviz_select.properties.options = { type: Array, value: [] };
+  jviz_select.properties.options = { type: Array, value: [], observer: '_update_options' };
 
   //Attached method
   jviz_select.attached = function()
@@ -103,8 +103,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       //Save the actual input value
       self.value = self.$.select.value;
 
-      //Fire the change event
-      self.fire('change', { value: self.value });
+      //Fire the change event as change:value
+      //Bug: https://github.com/Polymer/polymer/issues/687
+      self.fire('change:value', { value: self.value });
     });
 
     //Initialize the options list
@@ -128,6 +129,21 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
     //Save the new options list
     this.options = list;
+  };
+
+  //Update the options list
+  jviz_select._update_options = function(value)
+  {
+    //Read the options list
+    for(var i = 0; i < value.length; i++)
+    {
+      //Check the selected value
+      if(value[i].selected === true)
+      {
+        //Save the actual value
+        this.value = value[i].value;
+      }
+    }
   };
 
   //Update the input width
