@@ -1,0 +1,34 @@
+<!--
+@license
+Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
+The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
+-->
+
+<!-- Import dependencies -->
+<link rel="import" href="../../jviz/jviz.html">
+
+<!-- Select element -->
+<select id="test">
+  <option value="value1">Value 1</option>
+  <option value="value2" selected>Value 2</option>
+  <option value="value3">Value 3</option>
+  <option value="value4">Value 4</option>
+</select>
+
+<!-- Dom ready event -->
+<script>
+  var el = null;
+
+  //Dom ready listener
+  jviz.dom.ready(function()
+  {
+    //Get the element
+    el = jviz.dom.id('test');
+
+    //Add the change event listener
+    el.addEventListener('change', function()
+    {
+      console.log('Select changed to ' + el.value);
+    });
+  });
+</script>
