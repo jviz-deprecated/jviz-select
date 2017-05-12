@@ -88,7 +88,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_select.properties.color = { type: String, reflectToAttribute: true, value: 'grey', observer: '_update_color' };
   jviz_select.properties.disabled = { type: Boolean, reflectToAttribute: true, value: false };
   jviz_select.properties.width = { type: String, reflectToAttribute: true, value: '100px', observer: '_update_width' };
-  jviz_select.properties.value = { type: String, reflectToAttribute: false, value: '' };
+  jviz_select.properties.value = { type: String, reflectToAttribute: false, value: '', observer: '_update_value' };
   jviz_select.properties.options = { type: Array, value: [], observer: '_update_options' };
 
   //Attached method
@@ -129,6 +129,17 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
     //Save the new options list
     this.options = list;
+  };
+
+  //Update the selected value
+  jviz_select._update_value = function(value)
+  {
+    //Check the selected value
+    if(this.$.select.value !== value)
+    {
+      //Save the new value
+      this.$.select.value = value;
+    }
   };
 
   //Update the options list
