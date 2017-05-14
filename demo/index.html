@@ -22,10 +22,14 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   <option value="value3">Value 3</option>
 </jviz-select>
 
+<!-- Empty select element -->
+<jviz-select id="test2" width="100px"></jviz-select>
+
 <!-- Ready script -->
 <script>
   //Initialize the element
   var el = null;
+  var el2 = null;
 
   //Dom ready method
   jviz.dom.ready(function()
@@ -39,5 +43,11 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       //Display in console
       console.log('Value changed to ' + e.detail.value);
     });
+
+    //Initialize the second element
+    el2 = jviz.dom.id('test2');
+
+    //Add the options
+    el2.options = [ { text: 'Value 1', value: 'key1' }, { text: 'Value 2', value: 'key2', selected: true } ];
   });
 </script>
